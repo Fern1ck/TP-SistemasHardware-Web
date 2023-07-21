@@ -147,6 +147,14 @@
 	  padding: 8px;
 	  font-size: 16px;
 	  margin-bottom: 20px;
+	  color: black;
+	}
+
+	option {
+		color: black;
+	}
+	button {
+		color: black;
 	}
   
 	table {
