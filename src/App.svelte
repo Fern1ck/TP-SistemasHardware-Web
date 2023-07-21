@@ -1,4 +1,5 @@
 <script lang="ts">
+	import imgUrl from './circuitos.jpg'
 	import { onMount } from 'svelte';	
 	let datos : {Temperatura_Celcius: number, Humedad: number, Fecha: string}[];
 	let dispositivos : string[]
@@ -20,6 +21,7 @@
     }
 
 	onMount(() => {
+		document.body.style.backgroundImage = `url(${imgUrl})`;
 		fetchData().then(() => {
 			//const interval = setInterval(fetchRegistros, 2000);
 			//return () => clearInterval(interval);
@@ -104,10 +106,6 @@
 </main>
 
 <style>
-	:global(body) {
-		background-image: url("circuitos.jpg");
-	}
-
 	#tempDiv, #humedadDiv {
 	  display: flex;
 	  flex-direction: column;
@@ -158,7 +156,7 @@
 	}
 
 	th {
-		background-color: #4a4a4a;
+	  background-color: #4a4a4a;
 	  width: 25%;
 	}
   </style>
