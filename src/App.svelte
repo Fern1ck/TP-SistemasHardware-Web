@@ -5,12 +5,12 @@
 	let dispositivos : string[]
 	let dispositivoSeleccionado : string	
 
-	async function fetchData() {
+	async function fetchData(YaSeleccionado : string | null) {
       //fetch dispositivos
       const res = await fetch(`${import.meta.env.VITE_SERVERHOST}/dispositivos`);
       dispositivos = await res.json();  
       //se inicializa el select al primer dispositivo 
-      dispositivoSeleccionado = dispositivos[0]
+      dispositivoSeleccionado = YaSeleccionado ?? dispositivos[0]
       await fetchRegistros()
     }
 
@@ -22,7 +22,7 @@
 
 	onMount(() => {
 		document.body.style.backgroundImage = `url(${imgUrl})`;
-		fetchData().then(() => {
+		fetchData(null).then(() => {
 			//const interval = setInterval(fetchRegistros, 2000);
 			//return () => clearInterval(interval);
 		})
@@ -62,7 +62,7 @@
     {:else}
 
     <h2>Dispositivo seleccionado: {dispositivoSeleccionado}</h2>
-	<button on:click={() => fetchData()}>Actualizar datos</button>
+	<button on:click={() => fetchData(dispositivoSeleccionado)}>Actualizar datos</button>
     <select bind:value={dispositivoSeleccionado} on:change={() => fetchRegistros()}>
       {#each dispositivos as dispositivo}
         <option value={dispositivo}>
