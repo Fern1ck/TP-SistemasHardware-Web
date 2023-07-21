@@ -55,13 +55,14 @@
   {#key datos}
   <div class="card">
     {#if !datos}
-      <p>Cargando...</p>
+	<h2 id="tempInfo">Cargando...</h2>
     {:else if datos.length === 0}
-      <h2 id="temp">No hay datos aún</h2>
+	{console.log("datos: ", datos)}
+      <h2 id="tempInfo">No hay datos aún</h2>
     {:else}
 
-    <h2>Dispositivo seleccionado</h2>
-	<button on:click={() => fetchRegistros()}>Actualizar datos</button>
+    <h2>Dispositivo seleccionado: {dispositivoSeleccionado}</h2>
+	<button on:click={() => fetchData()}>Actualizar datos</button>
     <select bind:value={dispositivoSeleccionado} on:change={() => fetchRegistros()}>
       {#each dispositivos as dispositivo}
         <option value={dispositivo}>
