@@ -107,6 +107,10 @@
 </main>
 
 <style>
+	* {
+ 		font-family: Arial;
+		color: white;
+	}
 	#tempDiv, #humedadDiv {
 	  display: flex;
 	  flex-direction: column;
@@ -160,4 +164,6 @@
 	  background-color: #4a4a4a;
 	  width: 25%;
 	}
+
+
   </style>
